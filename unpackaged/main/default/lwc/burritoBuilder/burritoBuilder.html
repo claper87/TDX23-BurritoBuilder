@@ -1,0 +1,184 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-3 slds-text-align_center">
+          <h1 class="slds-text-heading_medium slds-p-around_large">
+            <span style="float:left">Burrito Builder</span>
+            <lightning-formatted-number style="float:right" value={burrito.cost} format-style="currency" currency-code="USD"></lightning-formatted-number>
+          </h1>
+          <br/><br/><br/>
+          <img src={burritoPicture} class="rotate_image"><br/><br/>
+
+            
+        </div>
+        <div class="slds-grid slds-welcome-mat__tiles slds-col slds-size_2-of-3">
+            <div class="slds-col  slds-size_1-of-3">
+                <div class="slds-welcome-mat__tile" data-item="protein" onclick={addCondiment}>
+                    <span class="slds-box slds-box_link slds-media" >
+                      <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+                        <div class="slds-welcome-mat__tile-figure">
+                          <div class="slds-welcome-mat__tile-icon-container">
+                            <span class="slds-icon_container slds-icon-utility-animal_and_nature">
+                                <template if:true={protein}>
+                                    <lightning-badge class="slds-badge slds-theme_success" label={protein_label}></lightning-badge>
+                                </template>
+                            </span>
+                            <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                              <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#check"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Completed</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-media__body">
+                        <div class="slds-welcome-mat__tile-body">
+                          <h3 class="slds-welcome-mat__tile-title">Protein</h3>
+                          <p class="slds-welcome-mat__tile-description">Plant-based or meat-based, a must to build storng muscules.</p>
+                        </div>
+                      </div>
+                    </span>
+                </div>
+                <div class="slds-welcome-mat__tile" data-item="cheese" onclick={addCondiment}>
+                    <span class="slds-box slds-box_link slds-media">
+                      <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+                        <div class="slds-welcome-mat__tile-figure">
+                          <div class="slds-welcome-mat__tile-icon-container">
+                            <span class="slds-icon_container slds-icon-utility-animal_and_nature">
+                                <template if:true={cheese}>
+                                    <lightning-badge class="slds-badge slds-theme_success" label={cheese_label}></lightning-badge>
+                                </template>
+                            </span>
+                            <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                              <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#check"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Completed</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-media__body">
+                        <div class="slds-welcome-mat__tile-body">
+                          <h3 class="slds-welcome-mat__tile-title">Cheese</h3>
+                          <p class="slds-welcome-mat__tile-description">Melted cheese brings everything together. It's also a source of calcium</p>
+                        </div>
+                      </div>
+                    </span>
+                </div>
+            </div>
+            <div class="slds-col  slds-size_1-of-3">
+                <div class="slds-welcome-mat__tile" data-item="rice" onclick={addCondiment}>
+                    <span class="slds-box slds-box_link slds-media">
+                      <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+                        <div class="slds-welcome-mat__tile-figure">
+                          <div class="slds-welcome-mat__tile-icon-container">
+                            <span class="slds-icon_container slds-icon-utility-animal_and_nature">
+                                <template if:true={rice}>
+                                    <lightning-badge class="slds-badge slds-theme_success" label={rice_label}></lightning-badge>
+                                </template>
+                            </span>
+                            <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                              <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#check"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Completed</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-media__body">
+                        <div class="slds-welcome-mat__tile-body">
+                          <h3 class="slds-welcome-mat__tile-title">Rice</h3>
+                          <p class="slds-welcome-mat__tile-description">Carbs are important too, they fuel our body and bellies.</p>
+                        </div>
+                      </div>
+                    </span>
+                </div>
+                <div class="slds-welcome-mat__tile" data-item="veggies" onclick={addCondiment}>
+                    <span class="slds-box slds-box_link slds-media">
+                      <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+                        <div class="slds-welcome-mat__tile-figure">
+                          <div class="slds-welcome-mat__tile-icon-container">
+                            <span class="slds-icon_container slds-icon-utility-animal_and_nature">
+                                <template if:true={veggies}>
+                                    <lightning-badge class="slds-badge slds-theme_success" label={veggies_label}></lightning-badge>
+                                </template>
+                            </span>
+                            <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                              <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#check"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Completed</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-media__body">
+                        <div class="slds-welcome-mat__tile-body">
+                          <h3 class="slds-welcome-mat__tile-title">Veggies</h3>
+                          <p class="slds-welcome-mat__tile-description">Full of macro-nutrients and minerals, they bring flavor to every bite.</p>
+                        </div>
+                      </div>
+                    </span>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-3">
+                <div class="slds-welcome-mat__tile" data-item="guacamole" onclick={addCondiment}>
+                    <span class="slds-box slds-box_link slds-media">
+                      <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+                        <div class="slds-welcome-mat__tile-figure">
+                          <div class="slds-welcome-mat__tile-icon-container">
+                            <span class="slds-icon_container slds-icon-utility-animal_and_nature">
+                                <template if:true={guac}>
+                                    <lightning-badge class="slds-badge slds-theme_success" label={guac_label}></lightning-badge>
+                                </template>
+                            </span>
+                            <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                              <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#check"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Completed</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-media__body">
+                        <div class="slds-welcome-mat__tile-body">
+                          <h3 class="slds-welcome-mat__tile-title">Guacamole!</h3>
+                          <p class="slds-welcome-mat__tile-description">Remember Guac it's always delicious and extra (+$2.00 per service)</p>
+                        </div>
+                      </div>
+                    </span>
+                </div>
+                <div class="slds-welcome-mat__tile" data-item="sourcream" onclick={addCondiment}>
+                    <span class="slds-box slds-box_link slds-media">
+                      <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+                        <div class="slds-welcome-mat__tile-figure">
+                          <div class="slds-welcome-mat__tile-icon-container">
+                            <span class="slds-icon_container slds-icon-utility-animal_and_nature">
+                                <template if:true={sourCream}>
+                                    <lightning-badge class="slds-badge slds-theme_success" label={sourCream_label}></lightning-badge>
+                                </template>
+                            </span>
+                            <span class="slds-icon_container slds-icon_container_circle slds-icon-action-check" title="Completed">
+                              <svg class="slds-icon slds-welcome-mat__icon-check" aria-hidden="true">
+                                <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#check"></use>
+                              </svg>
+                              <span class="slds-assistive-text">Completed</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="slds-media__body">
+                        <div class="slds-welcome-mat__tile-body">
+                          <h3 class="slds-welcome-mat__tile-title">Sour Cream</h3>
+                          <p class="slds-welcome-mat__tile-description">Add more flavor for less. This is a great way to sauce it up.</p>
+                        </div>
+                      </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
